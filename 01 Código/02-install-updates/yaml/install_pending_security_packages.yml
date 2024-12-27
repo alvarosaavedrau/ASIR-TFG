@@ -1,0 +1,52 @@
+---
+ - name: talk to all hosts for ansible distribution and ansible distribution major
+   hosts: all
+   tasks:
+     - name: Classify hosts depending on their OS distribution
+       group_by:
+         key: "{{ ansible_distribution }}_{{ ansible_distribution_major_version }}"
+
+ - name: Delete .json files before execute the playbooks
+   hosts: all
+   tasks:
+     - name: Deletes .json files
+       file:
+         path: /tmp/check_pending_security_packages.json
+         state: absent
+
+ - hosts: Ubuntu_18
+   gather_facts: False
+   tasks:
+     - name: Update for Ubuntu
+       include_tasks: ubuntu.yml
+
+ - hosts: Debian_9
+   gather_facts: False
+   tasks:
+     - name: Update for Debian
+       include_tasks: debian.yml
+
+ - hosts: all
+   gather_facts: False
+   tasks:
+    - name: check if json file exists
+      stat: path=/tmp/install_pending_security_packages.json
+      register: updates
+
+    - name : Can't process that distribution
+      include_tasks: list_error.yml
+      when: not updates.stat.exists
+
+    - name: check if json file exists
+      stat: path=/tmp/install_pending_security_packages.json
+      register: updates
+
+    - name : Patch Management - Retrieve Security updates (Linux)
+      command: cat /tmp/install_pending_security_packages.json
+      register: out
+      when: updates.stat.exists
+
+    - name: List security updates
+      debug: msg="{{ out.stdout }}"
+      when: updates.stat.exists
+...

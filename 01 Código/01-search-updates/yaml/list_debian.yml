@@ -1,0 +1,13 @@
+---
+- name: Copy update.sh to server
+  copy:
+    src: src: ../src/debian.sh
+    dest: /tmp/update.sh
+    owner: alvaro
+    group: sudo
+    mode: '0766'
+
+- name: Get a list of security updates
+  command: bash ../src/debian.sh
+  ignore_errors: yes
+...

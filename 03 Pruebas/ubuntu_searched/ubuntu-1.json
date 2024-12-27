@@ -1,0 +1,76 @@
+{
+    "msg": {
+        "repositories": [
+            {
+                "repository": "http://security.ubuntu.com/ubuntu",
+                "packages": [
+                    {
+                        "name": "isc-dhcp-client",
+                        "release_date": "2021-05-25",
+                        "security": {
+                            "urgency": "medium",
+                            "cves": [
+                                "CVE-2021-25217"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "isc-dhcp-common",
+                        "release_date": "2021-05-25",
+                        "security": {
+                            "urgency": "medium",
+                            "cves": [
+                                "CVE-2021-25217"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "liblz4-1",
+                        "release_date": "2021-05-20",
+                        "security": {
+                            "urgency": "medium",
+                            "cves": [
+                                "CVE-2021-3520"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "rsync",
+                        "release_date": "2020-02-18",
+                        "security": {
+                            "urgency": "medium",
+                            "cves": [
+                                "CVE-2016-9840",
+                                "CVE-2016-9841",
+                                "CVE-2016-9842",
+                                "CVE-2016-9843"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "wget",
+                        "release_date": "2019-04-08",
+                        "security": {
+                            "urgency": "medium",
+                            "cves": [
+                                "CVE-2018-20483",
+                                "CVE-2019-5953"
+                            ]
+                        }
+                    }
+                ],
+                "metadata": {
+                    "status": "OK",
+                    "reason_status": "There are packages with security updates"
+                }
+            }
+        ],
+        "metadata": {
+            "machine-hostname": "alvaro-1",
+            "generation_data_date": "2021-05-28 17:28:15"
+        }
+    },
+    "_ansible_verbose_always": true,
+    "_ansible_no_log": false,
+    "changed": false
+}

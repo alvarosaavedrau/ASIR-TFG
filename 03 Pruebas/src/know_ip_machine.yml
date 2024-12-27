@@ -1,0 +1,7 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+     - name: know the private ip
+       shell: curl ident.me
+...

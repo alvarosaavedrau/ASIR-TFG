@@ -1,0 +1,22 @@
+{
+    "msg": {
+        "repositories": [
+            {
+                "repository": "repository",
+                "metadata": {
+                    "status": "OK",
+                    "reason_status": "Packages updated",
+                    "execution_trace": "{'changed': True, 'end': '2021-05-28 17:34:17.543118', 'stdout': 'isc-dhcp-client isc-dhcp-common liblz4-1 rsync wget', 'cmd': ['bash', '/tmp/upgrade.sh', 'list', 'ubuntu'], 'rc': 0, 'start': '2021-05-28 17:34:16.515532', 'stderr': '\nWARNING: apt does not have a stable CLI interface. Use with caution in scripts.', 'delta': '0:00:01.027586', 'stdout_lines': ['isc-dhcp-client isc-dhcp-common liblz4-1 rsync wget'], 'stderr_lines': ['', 'WARNING: apt does not have a stable CLI interface. Use with caution in scripts.'], 'failed': False}"
+                }
+            }
+        ],
+        "patch_date": "",
+        "metadata": {
+            "machine-hostname": "alvaro-2",
+            "generation_data_date": "2021-05-28 17:34:43"
+        }
+    },
+    "_ansible_verbose_always": true,
+    "_ansible_no_log": false,
+    "changed": false
+}

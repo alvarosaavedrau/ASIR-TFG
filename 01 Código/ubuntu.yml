@@ -1,0 +1,46 @@
+---
+- name: Step 0. Copy upgrade.sh to server
+  copy:
+    src: 02-install-updates/upgrade_os.sh
+    dest: /tmp/upgrade.sh
+    owner: alvaro
+    group: sudo
+    mode: '0766'
+
+- name: Step 1. Get the list of security packages
+  command: bash /tmp/upgrade.sh list ubuntu
+  ignore_errors: yes
+  register: packages
+
+- name: Step 2a. Installing new security patches...
+  apt:
+    name: "{{ packages.stdout.split() }}"
+    state: latest
+  register: aptout
+  when:  packages.rc == 0
+
+- debug: var=aptout
+
+- name: Step 3a. Generate .json output
+  command: bash /tmp/upgrade.sh update "{{ packages.rc }}" ubuntu "{{ packages }}"
+  ignore_errors: yes
+  register: out
+  when:  packages.rc == 0
+
+- name: Step 2b. Getting execution trace when there is an error or no package to update
+  apt:
+    name: "{{ packages.stdout_lines }}"
+    state: latest
+  register: aptout
+  ignore_errors: yes
+  failed_when: not aptout.failed
+  when:  (packages.rc == 1) or (packages.rc == -1)
+
+- debug: var=aptout
+
+- name: Step 3b. Generate .json output
+  command: bash /tmp/upgrade.sh update "{{ packages.rc }}" "{{ packages }}" ubuntu
+  ignore_errors: yes
+  register: out
+  when:  (packages.rc == 1) or (packages.rc == -1)
+...

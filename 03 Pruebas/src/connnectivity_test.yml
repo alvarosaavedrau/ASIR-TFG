@@ -1,0 +1,7 @@
+---
+- hosts: all
+  tasks:
+    - name: PrintMessage
+      debug:
+        msg: 'Hello, this is a connectivity test and it is OK!'
+...

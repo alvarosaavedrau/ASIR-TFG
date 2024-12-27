@@ -1,0 +1,21 @@
+{
+    "msg": {
+        "repositories": [
+            {
+                "repository": "",
+                "packages": [],
+                "metadata": {
+                    "status": "No packages to update",
+                    "reason_status": "There are no packages with security updates"
+                }
+            }
+        ],
+        "metadata": {
+            "machine-hostname": "debian-2",
+            "generation_data_date": "2021-05-28 18:30:08"
+        }
+    },
+    "_ansible_verbose_always": true,
+    "_ansible_no_log": false,
+    "changed": false
+}
